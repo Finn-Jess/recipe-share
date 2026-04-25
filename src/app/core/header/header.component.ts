@@ -1,13 +1,20 @@
-
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.scss'
+  // Премахнахме styleUrl реда, който търсеше липсващия файл
 })
-// Увери се, че тук пише export class HeaderComponent
-export class HeaderComponent { }
+export class HeaderComponent {
+  constructor(public authService: AuthService, private router: Router) {}
+
+  onLogout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+}
