@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+/* Глобални настройки */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Навигация */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 10%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  .nav-brand a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff4757;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.3s;
+
+      &:hover, &.active {
+        color: #ff4757;
+      }
+    }
+  }
+}
+
+/* Основно съдържание */
+.content-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 20px;
+}
