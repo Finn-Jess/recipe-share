@@ -1,1 +1,20 @@
-<p>recipe-list works!</p>
+<div class="catalog-container">
+  <h1>All Recipes & Articles</h1>
+
+  <div *ngIf="recipes.length === 0" style="text-align: center; margin-top: 50px;">
+    <p>No recipes found. Be the first to <a routerLink="/create">create one</a>!</p>
+  </div>
+
+  <div class="recipe-grid">
+    <div *ngFor="let r of recipes" class="recipe-card">
+      <img [src]="r.imageUrl" alt="{{r.title}}">
+      
+      <div class="card-content">
+        <h3>{{ r.title }}</h3>
+        <p>{{ r.description | slice:0:100 }}{{ r.description.length > 100 ? '...' : '' }}</p>
+      </div>
+
+      <a [routerLink]="['/details', r._id]" class="btn-details">View Details</a>
+    </div>
+  </div>
+</div>
