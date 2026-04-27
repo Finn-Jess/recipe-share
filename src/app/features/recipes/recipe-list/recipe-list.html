@@ -1,11 +1,19 @@
 <div class="catalog-container">
   <div class="catalog-header">
     <h1>All Recipes & Articles</h1>
-    <a routerLink="/create" class="btn-create-more">Create Recipe</a>
+    <a *ngIf="authService.isLoggedIn" routerLink="/create" class="btn-create-more">Create Recipe</a>
   </div>
 
   <div *ngIf="recipes.length === 0" style="text-align: center; margin-top: 50px;">
-    <p>No recipes found. Be the first to <a routerLink="/create">create one</a>!</p>
+    <p>
+      No recipes found.
+      <ng-container *ngIf="authService.isLoggedIn; else loginToCreate">
+        Be the first to <a routerLink="/create">create one</a>!
+      </ng-container>
+      <ng-template #loginToCreate>
+        <a routerLink="/login">Log in</a> to create one.
+      </ng-template>
+    </p>
   </div>
 
   <div class="recipe-grid">

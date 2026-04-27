@@ -1,7 +1,7 @@
 <div class="catalog-container home-catalog">
   <div class="catalog-header">
     <h1>All Recipes & Articles</h1>
-    <a routerLink="/create" class="btn-create-more">Create Recipe</a>
+    <a *ngIf="isLoggedIn" routerLink="/create" class="btn-create-more">Create Recipe</a>
   </div>
 
   <ng-container *ngIf="isLoggedIn; else guestView">
@@ -60,7 +60,6 @@
         <a routerLink="/login" class="btn btn-login">Log in now</a>
         <a routerLink="/register" class="btn btn-register">Sign up</a>
       </div>
-      <p>Only registered users can view and comment on recipes.</p>
     </div>
   </div>
 </ng-template>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { RecipeService } from '../../../core/recipe.service';
 import { Recipe } from '../../../core/models/recipe.model';
+import { AuthService } from '../../../core/auth.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -14,7 +15,10 @@ import { Recipe } from '../../../core/models/recipe.model';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private recipeService: RecipeService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     // Абонираме се за промените в рецептите
