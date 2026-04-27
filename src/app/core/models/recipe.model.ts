@@ -8,6 +8,10 @@ export interface Recipe {
   image?: string;        // Алтернативен линк към снимка
   instructions?: string; // Инструкции
   steps?: string;        // Стъпки (алтернатива на instructions)
+  type?: string;         // Тип рецепта / категория
+  prepTime?: string;     // Време за подготовка
+  time?: string;         // Алтернативно време
+  servings?: string;     // Брой порции
   ownerId?: string;     // Кой е създателят
   likes: string[];      // Списък с ID-та на хората, които са лайкнали
   comments: Comment[];  // Списък с коментари

@@ -18,6 +18,7 @@ export class RecipeDetailsComponent implements OnInit {
   error: string | null = null;
   isLoading = true;
   newCommentText = '';
+  linkCopied = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -69,5 +70,21 @@ export class RecipeDetailsComponent implements OnInit {
     this.recipeService.addComment(this.recipe._id, comment);
     this.recipe.comments = [...(this.recipe.comments || []), comment];
     this.newCommentText = '';
+  }
+
+  copyLink() {
+    if (!this.recipe) {
+      return;
+    }
+
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+      this.linkCopied = true;
+      setTimeout(() => {
+        this.linkCopied = false;
+      }, 2000);
+    }).catch(() => {
+      this.linkCopied = false;
+    });
   }
 }

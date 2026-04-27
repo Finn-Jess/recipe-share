@@ -8,7 +8,8 @@ import { RecipeService } from '../../../core/recipe.service'; // Пътят мо
   selector: 'app-recipe-create',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './recipe-create.component.html'
+  templateUrl: './recipe-create.component.html',
+  styleUrls: ['./recipe-create.scss']
 })
 export class RecipeCreateComponent {
   recipeForm: FormGroup;
@@ -20,6 +21,9 @@ export class RecipeCreateComponent {
   ) {
     this.recipeForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
+      type: ['Recipe', [Validators.required]],
+      prepTime: ['30', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      servings: ['4', [Validators.required, Validators.pattern('^[0-9]+$')]],
       imageUrl: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.minLength(10)]],
       ingredients: ['', [Validators.required]]

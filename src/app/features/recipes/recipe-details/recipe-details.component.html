@@ -3,45 +3,40 @@
 <div *ngIf="error" class="error">{{ error }}</div>
 
 <div *ngIf="recipe" class="recipe-details-container">
-  <!-- Header Section -->
   <div class="recipe-header">
     <h1 class="recipe-title">{{ recipe.title || recipe.name }}</h1>
     <div class="recipe-meta">
-      <span>🍳 Recipe</span>
-      <span>⏱️ 30 min</span>
-      <span>👥 4 servings</span>
+      <span>🍳 {{ recipe.type || 'Recipe' }}</span>
+      <span>⏱️ {{ recipe.prepTime || recipe.time || '30' }} min</span>
+      <span>👥 {{ recipe.servings || '4' }} servings</span>
     </div>
   </div>
 
-  <!-- Hero Image -->
   <div class="recipe-image-wrapper" *ngIf="recipe.imageUrl || recipe.image">
     <img [src]="recipe.imageUrl || recipe.image" alt="Recipe image">
   </div>
 
-  <!-- Content Grid -->
   <div class="recipe-content-grid">
-    <!-- Ingredients Side -->
     <div class="ingredients-section">
       <h3>Ingredients</h3>
       <ul class="ingredient-list">
         <li class="ingredient-item" *ngFor="let ingredient of (recipe.ingredients || '').split(/[,\n]/)">
-  {{ ingredient.trim() }}
-</li>
+          {{ ingredient.trim() }}
+        </li>
       </ul>
     </div>
 
-    <!-- Instructions Side -->
-   <div class="description-section">
-  <div class="description-text" *ngFor="let line of (recipe.instructions || recipe.steps || '').split('\n')">
-    {{ line.trim() }}
+    <div class="description-section">
+      <h3>Description</h3>
+      <p class="description-text">{{ recipe.description }}</p>
+    </div>
   </div>
-</div>
-  
 
-  <!-- Actions -->
   <div class="recipe-actions">
     <button class="btn btn-primary" routerLink="/catalog">Back to All Recipes</button>
-    <button class="btn btn-outline">Share Recipe</button>
+    <button class="btn btn-primary" type="button" (click)="copyLink()">
+      {{ linkCopied ? 'Link Copied!' : 'Share Recipe' }}
+    </button>
   </div>
 
   <div class="comments-section">
