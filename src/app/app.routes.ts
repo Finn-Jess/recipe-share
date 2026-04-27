@@ -4,7 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { RecipeListComponent } from './features/recipes/recipe-list/recipe-list.component';
 import { RecipeCreateComponent } from './features/recipes/recipe-create/recipe-create.component';
-import { RecipeDetails } from './features/recipes/recipe-details/recipe-details';
+import { RecipeDetailsComponent } from './features/recipes/recipe-details/recipe-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,5 +12,5 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'catalog', component: RecipeListComponent },
   { path: 'create', component: RecipeCreateComponent },
-  { path: 'details/:id', component: RecipeDetails }, // :id е динамичен параметър
+  { path: 'details/:id', component: RecipeDetailsComponent }, // :id е динамичен параметър
 ];

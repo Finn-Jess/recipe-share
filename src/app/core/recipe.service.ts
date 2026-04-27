@@ -36,6 +36,10 @@ export class RecipeService {
     return this.recipes;
   }
 
+  getRecipeById(id: string) {
+    return this.recipes.find(recipe => recipe._id === id);
+  }
+
   private save() {
     if (typeof window !== 'undefined') {
       localStorage.setItem('recipes', JSON.stringify(this.recipes));

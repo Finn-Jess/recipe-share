@@ -1,0 +1,16 @@
+<div *ngIf="isLoading">Loading recipe...</div>
+
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="recipe" class="recipe-details">
+  <h1>{{ recipe.title || recipe.name }}</h1>
+  <img [src]="recipe.imageUrl || recipe.image" alt="Recipe image" *ngIf="recipe.imageUrl || recipe.image">
+  
+  <p><strong>Description:</strong> {{ recipe.description }}</p>
+  <p><strong>Ingredients:</strong> {{ recipe.ingredients }}</p>
+  <p><strong>Instructions:</strong> {{ recipe.instructions || recipe.steps }}</p>
+  
+  <!-- Add more fields as per your Recipe model -->
+  
+  <button routerLink="/recipes">Back to All Recipes</button>
+</div>
