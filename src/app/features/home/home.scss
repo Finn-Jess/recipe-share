@@ -1,0 +1,149 @@
+ .catalog-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.home-catalog .catalog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.home-catalog h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+.btn-create-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  background-color: #ff6b6b;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-create-more:hover {
+  background-color: #e55a5a;
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 3rem;
+  color: #6c757d;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.recipe-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.25rem;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  margin: 0 0 0.5rem;
+  color: #2c3e50;
+}
+
+.card-content p {
+  margin: 0;
+  color: #6c757d;
+}
+
+.btn-details {
+  display: block;
+  margin: 1rem;
+  padding: 0.85rem 1rem;
+  text-align: center;
+  color: white;
+  background: #2c3e50;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.btn-details:hover {
+  background: #1f2b36;
+}
+
+.comment-section {
+  padding: 1rem 1.25rem 1.5rem;
+  border-top: 1px solid #f1f3f5;
+}
+
+.comment-section h4 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.comment-item {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.comment-item strong {
+  color: #2c3e50;
+}
+
+.no-comments {
+  margin: 0 0 0.75rem;
+  color: #7f8c8d;
+}
+
+.new-comment {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.new-comment textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.85rem;
+  resize: vertical;
+}
+
+.btn-comment {
+  width: fit-content;
+  padding: 0.75rem 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-comment:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+

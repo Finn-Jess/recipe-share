@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Recipe } from './models/recipe.model';
+import { Recipe, Comment } from './models/recipe.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,16 @@ export class RecipeService {
 
   getRecipeById(id: string) {
     return this.recipes.find(recipe => recipe._id === id);
+  }
+
+  addComment(recipeId: string, comment: Comment) {
+    const recipe = this.recipes.find(r => r._id === recipeId);
+    if (!recipe) {
+      return;
+    }
+
+    recipe.comments = [...(recipe.comments || []), comment];
+    this.save();
   }
 
   private save() {

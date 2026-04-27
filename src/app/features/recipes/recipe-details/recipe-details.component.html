@@ -24,27 +24,48 @@
     <div class="ingredients-section">
       <h3>Ingredients</h3>
       <ul class="ingredient-list">
-        <li class="ingredient-item" *ngFor="let ingredient of (recipe.ingredients || '').split(',')">
-          {{ ingredient.trim() }}
-          <span class="amount">1 cup</span>
-        </li>
+        <li class="ingredient-item" *ngFor="let ingredient of (recipe.ingredients || '').split(/[,\n]/)">
+  {{ ingredient.trim() }}
+</li>
       </ul>
     </div>
 
     <!-- Instructions Side -->
-    <div class="instructions-section">
-      <h3>Instructions</h3>
-      <div class="instruction-steps">
-        <div class="step" *ngFor="let step of (recipe.instructions || recipe.steps || '').split('.'); let i = index">
-          {{ step.trim() }}
-        </div>
-      </div>
-    </div>
+   <div class="description-section">
+  <div class="description-text" *ngFor="let line of (recipe.instructions || recipe.steps || '').split('\n')">
+    {{ line.trim() }}
   </div>
+</div>
+  
 
   <!-- Actions -->
   <div class="recipe-actions">
     <button class="btn btn-primary" routerLink="/catalog">Back to All Recipes</button>
     <button class="btn btn-outline">Share Recipe</button>
+  </div>
+
+  <div class="comments-section">
+    <h3>Comments ({{ recipe.comments.length || 0 }})</h3>
+
+    <div *ngIf="recipe.comments.length; else noComments">
+      <div class="comment-item" *ngFor="let comment of recipe.comments">
+        <div class="comment-user">{{ comment.username }}</div>
+        <p class="comment-text">{{ comment.text }}</p>
+      </div>
+    </div>
+    <ng-template #noComments>
+      <p class="no-comments">No comments yet. Be the first to add one!</p>
+    </ng-template>
+
+    <div class="comment-form">
+      <textarea
+        [(ngModel)]="newCommentText"
+        placeholder="Write your comment..."
+        rows="3"
+      ></textarea>
+      <button class="btn btn-primary" type="button" (click)="addComment()" [disabled]="!newCommentText.trim()">
+        Add Comment
+      </button>
+    </div>
   </div>
 </div>

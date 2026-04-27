@@ -1,1 +1,52 @@
-<p>home works!</p>
+<div class="catalog-container home-catalog">
+  <div class="catalog-header">
+    <h1>All Recipes & Articles</h1>
+    <a routerLink="/create" class="btn-create-more">Create Recipe</a>
+  </div>
+
+  <div *ngIf="recipes.length === 0" class="empty-state">
+    <p>No recipes yet. Start by creating your first recipe.</p>
+  </div>
+
+  <div class="recipe-grid">
+    <div *ngFor="let recipe of recipes" class="recipe-card">
+      <img [src]="recipe.imageUrl" alt="{{ recipe.title }}">
+
+      <div class="card-content">
+        <h3>{{ recipe.title }}</h3>
+        <p>{{ recipe.description | slice:0:100 }}{{ recipe.description.length > 100 ? '...' : '' }}</p>
+      </div>
+
+      <a [routerLink]="['/details', recipe._id]" class="btn-details">View Details</a>
+
+      <div class="comment-section">
+        <h4>Comments</h4>
+        <div *ngIf="recipe.comments.length; else noComments">
+          <div *ngFor="let comment of recipe.comments" class="comment-item">
+            <strong>{{ comment.username }}:</strong>
+            <span>{{ comment.text }}</span>
+          </div>
+        </div>
+        <ng-template #noComments>
+          <p class="no-comments">No comments yet.</p>
+        </ng-template>
+
+        <div class="new-comment">
+          <textarea
+            [(ngModel)]="commentInputs[recipe._id || '']"
+            placeholder="Add a comment..."
+            rows="2"
+          ></textarea>
+          <button
+            class="btn-comment"
+            type="button"
+            (click)="addComment(recipe._id!)"
+            [disabled]="!commentInputs[recipe._id || '']?.trim()"
+          >
+            Add Comment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
