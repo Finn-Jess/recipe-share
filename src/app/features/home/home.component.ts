@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RecipeService } from '../../core/recipe.service';
 import { Recipe } from '../../core/models/recipe.model';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,20 @@ import { Recipe } from '../../core/models/recipe.model';
 export class HomeComponent implements OnInit {
   recipes: Recipe[] = [];
   commentInputs: Record<string, string> = {};
+  isLoggedIn = false;
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private recipeService: RecipeService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.recipeService.recipes$.subscribe((data) => {
       this.recipes = data;
+    });
+
+    this.authService.user$.subscribe((user) => {
+      this.isLoggedIn = !!user;
     });
   }
 

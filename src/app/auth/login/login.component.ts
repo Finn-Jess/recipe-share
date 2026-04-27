@@ -25,6 +25,14 @@ export class LoginComponent {
     });
   }
 
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value);

@@ -4,6 +4,54 @@
   padding: 0 1rem;
 }
 
+.guest-welcome {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.guest-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  text-align: center;
+}
+
+.guest-card h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.7rem;
+  color: #2c3e50;
+}
+
+.guest-actions {
+  display: inline-flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.btn-login,
+.btn-register {
+  padding: 0.85rem 1.3rem;
+  border-radius: 999px;
+  background: #ff6b6b;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.btn-register {
+  background: #2c3e50;
+}
+
+.guest-card p {
+  margin: 0;
+  color: #6c757d;
+}
+
 .home-catalog .catalog-header {
   display: flex;
   align-items: center;
@@ -141,27 +189,15 @@
   color: #7f8c8d;
 }
 
-.new-comment {
-  display: grid;
-  gap: 0.75rem;
-    width: 100%;
-  }
-
-  .new-comment textarea {
-    width: 100%;
-    box-sizing: border-box;
-  resize: vertical;
-}
-
 .btn-comment {
-  width: fit-content;
-  padding: 0.75rem 1rem;
-  background: #e67e22;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
+    width: fit-content;
+    padding: 0.75rem 1rem;
+    background: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
 
 .btn-comment:disabled {
   opacity: 0.6;

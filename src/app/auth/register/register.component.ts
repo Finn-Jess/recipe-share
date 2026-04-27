@@ -23,7 +23,23 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       rePassword: ['', [Validators.required]]
-    });
+    }, { validators: this.passwordMatchValidator });
+  }
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+
+  get password() {
+    return this.registerForm.get('password');
+  }
+
+  get rePassword() {
+    return this.registerForm.get('rePassword');
+  }
+
+  passwordMatchValidator(form: FormGroup) {
+    return form.get('password')?.value === form.get('rePassword')?.value ? null : { mismatch: true };
   }
 
   onSubmit() {

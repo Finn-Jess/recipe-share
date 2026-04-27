@@ -4,11 +4,12 @@
     <a routerLink="/create" class="btn-create-more">Create Recipe</a>
   </div>
 
-  <div *ngIf="recipes.length === 0" class="empty-state">
-    <p>No recipes yet. Start by creating your first recipe.</p>
-  </div>
+  <ng-container *ngIf="isLoggedIn; else guestView">
+    <div *ngIf="recipes.length === 0" class="empty-state">
+      <p>No recipes yet. Start by creating your first recipe.</p>
+    </div>
 
-  <div class="recipe-grid">
+    <div class="recipe-grid">
     <div *ngFor="let recipe of recipes" class="recipe-card">
       <img [src]="recipe.imageUrl" alt="{{ recipe.title }}">
 
@@ -49,4 +50,18 @@
       </div>
     </div>
   </div>
+</ng-container>
+
+<ng-template #guestView>
+  <div class="guest-welcome">
+    <div class="guest-card">
+      <h2>New here? Join the community and explore new recipes or create your own!</h2>
+      <div class="guest-actions">
+        <a routerLink="/login" class="btn btn-login">Log in now</a>
+        <a routerLink="/register" class="btn btn-register">Sign up</a>
+      </div>
+      <p>Only registered users can view and comment on recipes.</p>
+    </div>
+  </div>
+</ng-template>
 </div>
