@@ -1,0 +1,89 @@
+.catalog-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.catalog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.catalog-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+.btn-create-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  background-color: #ff6b6b;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-create-more:hover {
+  background-color: #e55a5a;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.recipe-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.25rem;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  margin: 0 0 0.5rem;
+  color: #2c3e50;
+}
+
+.card-content p {
+  margin: 0;
+  color: #6c757d;
+  line-height: 1.5;
+}
+
+.btn-details {
+  display: block;
+  margin: 1rem;
+  padding: 0.85rem 1rem;
+  text-align: center;
+  color: white;
+  background: #2c3e50;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.btn-details:hover {
+  background: #1f2b36;
+}

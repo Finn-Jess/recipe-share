@@ -1,16 +1,50 @@
-<div *ngIf="isLoading">Loading recipe...</div>
+<div *ngIf="isLoading" class="loading">Loading recipe...</div>
 
 <div *ngIf="error" class="error">{{ error }}</div>
 
-<div *ngIf="recipe" class="recipe-details">
-  <h1>{{ recipe.title || recipe.name }}</h1>
-  <img [src]="recipe.imageUrl || recipe.image" alt="Recipe image" *ngIf="recipe.imageUrl || recipe.image">
-  
-  <p><strong>Description:</strong> {{ recipe.description }}</p>
-  <p><strong>Ingredients:</strong> {{ recipe.ingredients }}</p>
-  <p><strong>Instructions:</strong> {{ recipe.instructions || recipe.steps }}</p>
-  
-  <!-- Add more fields as per your Recipe model -->
-  
-  <button routerLink="/recipes">Back to All Recipes</button>
+<div *ngIf="recipe" class="recipe-details-container">
+  <!-- Header Section -->
+  <div class="recipe-header">
+    <h1 class="recipe-title">{{ recipe.title || recipe.name }}</h1>
+    <div class="recipe-meta">
+      <span>🍳 Recipe</span>
+      <span>⏱️ 30 min</span>
+      <span>👥 4 servings</span>
+    </div>
+  </div>
+
+  <!-- Hero Image -->
+  <div class="recipe-image-wrapper" *ngIf="recipe.imageUrl || recipe.image">
+    <img [src]="recipe.imageUrl || recipe.image" alt="Recipe image">
+  </div>
+
+  <!-- Content Grid -->
+  <div class="recipe-content-grid">
+    <!-- Ingredients Side -->
+    <div class="ingredients-section">
+      <h3>Ingredients</h3>
+      <ul class="ingredient-list">
+        <li class="ingredient-item" *ngFor="let ingredient of (recipe.ingredients || '').split(',')">
+          {{ ingredient.trim() }}
+          <span class="amount">1 cup</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Instructions Side -->
+    <div class="instructions-section">
+      <h3>Instructions</h3>
+      <div class="instruction-steps">
+        <div class="step" *ngFor="let step of (recipe.instructions || recipe.steps || '').split('.'); let i = index">
+          {{ step.trim() }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="recipe-actions">
+    <button class="btn btn-primary" routerLink="/catalog">Back to All Recipes</button>
+    <button class="btn btn-outline">Share Recipe</button>
+  </div>
 </div>

@@ -9,7 +9,7 @@ import { Recipe } from '../../../core/models/recipe.model';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './recipe-list.html',
-  styleUrl: './recipe-list.scss'
+  styleUrls: ['./recipe-list.scss']
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];

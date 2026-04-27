@@ -1,5 +1,8 @@
 <div class="catalog-container">
-  <h1>All Recipes & Articles</h1>
+  <div class="catalog-header">
+    <h1>All Recipes & Articles</h1>
+    <a routerLink="/create" class="btn-create-more">Create Recipe</a>
+  </div>
 
   <div *ngIf="recipes.length === 0" style="text-align: center; margin-top: 50px;">
     <p>No recipes found. Be the first to <a routerLink="/create">create one</a>!</p>
